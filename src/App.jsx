@@ -8,16 +8,17 @@ export default function App() {
   const sendMessage = useMutation("sendMessage");
 
   const [name] = useState(() => "User " + Math.floor(Math.random() * 10000));
+// Add a new query to retrieve the bid price
+  const bidPrice = useQuery("getBidPrice") || [];
 
   async function handleSendMessage(event) {
     event.preventDefault();
     setNewMessageText("");
     // convert string to number
-    await sendMessage({ body: Number(newMessageText), author: name });
+    await sendMessage({ body: Number(newMessageText), author: name , curr_max: bidPrice[0].body});
   }
 
-  // Add a new query to retrieve the bid price
-  const bidPrice = useQuery("getBidPrice") || [];
+  
 
   //const bidPrice = "100";
 
