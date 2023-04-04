@@ -11,11 +11,16 @@ export default function App() {
 // Add a new query to retrieve the bid price
   const bidPrice = useQuery("getBidPrice") || [];
 
+  const [errorMessage, setErrorMessage] = useState(null);
   async function handleSendMessage(event) {
     event.preventDefault();
     setNewMessageText("");
-    // convert string to number
-    await sendMessage({ body: Number(newMessageText), author: name , curr_max: bidPrice[0].body});
+    const result = await sendMessage({ body: Number(newMessageText), author: name , curr_max: bidPrice[0].body});
+    if (result === "ok") {
+      setError(undefined);
+    } else {
+      setError(result);
+    }
   }
 
   
