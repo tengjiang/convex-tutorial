@@ -36,11 +36,11 @@ export default function App() {
       {/* Render the bid price based on the response of the `getBidPrice` query */}
       {/* <div id="bid_price" align="center">Current bid price: {bidPrice || "1,000,000"}$</div> */}
 
-      <div id="bid_price" align="center">
+      {/*<div id="bid_price" align="center">
 
         Current bid price: ${bidPrice[0].body} by {bidPrice[0].author}
 
-      </div>
+      </div>*/}
           
       <ul>
         {messages.map(message => (
