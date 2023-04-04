@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>Convex Chat</h1>
+      <h1>Convex Art Auction</h1>
       <p className="badge">
         <span>{name}</span>
       </p>
@@ -56,9 +56,9 @@ export default function App() {
         <input
           value={newMessageText}
           onChange={event => setNewMessageText(event.target.value)}
-          placeholder="Write a message…"
+          placeholder="Enter your bid price..."
         />
-        <input type="submit" value="Send" disabled={!newMessageText} />
+        <input type="submit" value="Bid" disabled={!newMessageText} />
       </form>
 
     </main>
