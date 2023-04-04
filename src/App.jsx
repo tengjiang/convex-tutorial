@@ -37,12 +37,16 @@ export default function App() {
       {/* <div id="bid_price" align="center">Current bid price: {bidPrice || "1,000,000"}$</div> */}
 
       <div id="bid_price" align="center">
-
-        Current bid price: ${bidPrice[0].body} by {bidPrice[0].author}
-
+        {bidPrice.map(bidPrice => (
+          <li key={bidPrice._id.toString()}>
+            Current bid price:
+            ${bidPrice.body} by {bidPrice.author} at {new Date(bidPrice._creationTime).toLocaleTimeString()}
+          </li>
+        ))}
       </div>
           
       <ul>
+
         {messages.map(message => (
           <li key={message._id.toString()}>
             <span>{message.author}:</span>
@@ -50,6 +54,7 @@ export default function App() {
             <span>{new Date(message._creationTime).toLocaleTimeString()}</span>
           </li>
         ))}
+
       </ul>
 
       <form onSubmit={handleSendMessage}>
