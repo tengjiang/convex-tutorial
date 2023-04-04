@@ -12,13 +12,14 @@ export default function App() {
   async function handleSendMessage(event) {
     event.preventDefault();
     setNewMessageText("");
-    await sendMessage({ body: newMessageText, author: name });
+    // convert string to number
+    await sendMessage({ body: Number(newMessageText), author: name });
   }
 
   // Add a new query to retrieve the bid price
-  //const bidPrice = useQuery("getBidPrice");
+  const bidPrice = useQuery("getBidPrice") || [];
 
-  const bidPrice = "100";
+  //const bidPrice = "100";
 
   return (
     <main>
@@ -33,13 +34,19 @@ export default function App() {
       </div>
 
       {/* Render the bid price based on the response of the `getBidPrice` query */}
-      <div id="bid_price" align="center">Current bid price: {bidPrice || "1,000,000"}$</div>
+      {/* <div id="bid_price" align="center">Current bid price: {bidPrice || "1,000,000"}$</div> */}
 
+      <div id="bid_price" align="center">
+
+        Current bid price: ${bidPrice[0].body} by {bidPrice[0].author}
+
+      </div>
+          
       <ul>
         {messages.map(message => (
           <li key={message._id.toString()}>
             <span>{message.author}:</span>
-            <span>{message.body}</span>
+            <span>${message.body}</span>
             <span>{new Date(message._creationTime).toLocaleTimeString()}</span>
           </li>
         ))}
