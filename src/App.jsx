@@ -19,7 +19,7 @@ export default function App() {
     if (result === "ok") {
       setError(undefined);
     } else {
-      setError(result);
+      setError({ type: 'custom', message: result });
     }
   }
 
