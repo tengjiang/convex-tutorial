@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>Convex Chat</h1>
+      <h1>Convex Art Auction</h1>
       <p className="badge">
         <span>{name}</span>
       </p>
@@ -36,6 +36,7 @@ export default function App() {
       {/* Render the bid price based on the response of the `getBidPrice` query */}
       {/* <div id="bid_price" align="center">Current bid price: {bidPrice || "1,000,000"}$</div> */}
 
+<<<<<<< HEAD
       <div id="bid_price" align="center">
         {bidPrice.map(bidPrice => (
           <li key={bidPrice._id.toString()}>
@@ -44,6 +45,13 @@ export default function App() {
           </li>
         ))}
       </div>
+=======
+      {/*<div id="bid_price" align="center">
+
+        Current bid price: ${bidPrice[0].body} by {bidPrice[0].author}
+
+      </div>*/}
+>>>>>>> 5a6dcda4edef194f1b6b9fdeb910e468ed10eedb
           
       <ul>
 
@@ -61,9 +69,9 @@ export default function App() {
         <input
           value={newMessageText}
           onChange={event => setNewMessageText(event.target.value)}
-          placeholder="Write a message…"
+          placeholder="Enter your bid price..."
         />
-        <input type="submit" value="Send" disabled={!newMessageText} />
+        <input type="submit" value="Bid" disabled={!newMessageText} />
       </form>
 
     </main>
